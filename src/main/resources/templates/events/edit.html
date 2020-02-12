@@ -5,14 +5,15 @@
 
 <header th:replace="fragments :: header"></header>
 
-<form method="post">
+<form method="post" th:action="@{/events/edit}">
+    <input type="hidden" th:value="${event.id}" name="eventId" />
     <label>Name
         <input type="text" name="name">
     </label>
     <label>Description
         <input type="text" name="description">
     </label>
-    <input type="submit" value="Create">
+    <input type="submit" value="Edit">
 </form>
 
 </body>

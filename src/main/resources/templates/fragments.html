@@ -13,8 +13,18 @@
     <ul>
         <li><a href="/events">All Events</a></li>
         <li><a href="/events/create">Create Event</a></li>
+        <li><a href="/events/delete">Delete Events</a></li>
     </ul>
 </nav>
+
+<table>
+    <tr>
+        <td th:fragment="address">5300 Troost Ave, KCMO</td>
+    </tr>
+    <th:block th:fragment="images">
+       <td th:each="image : ${images}"><img th:src = "@{image}"></td>
+    </th:block>
+</table>
 
 </body>
 </html>
