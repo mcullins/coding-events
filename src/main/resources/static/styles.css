@@ -1,4 +1,18 @@
 body {
   font-size: 18px;
-  color: purple;
+}
+
+table {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+}
+
+td {
+    border-style: solid;
+}
+
+.error{
+  color: red;
 }
