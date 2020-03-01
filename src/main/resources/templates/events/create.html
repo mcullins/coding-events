@@ -17,6 +17,11 @@
     <label>Contact Email
         <input th:field="${event.contactEmail}">
     </label>
+    <p class="error" th:errors="${event.contactEmail}"></p>
+    <label>Location
+        <input th:field="${event.location}">
+    </label>
+    <p class="error" th:errors="${event.location}"></p>
     <label>Event Type
         <select th:field="${event.type}">
             <option th:each="type : ${types}"
@@ -24,7 +29,11 @@
                     th:text="${type.displayName}"></option>
         </select>
     </label>
-    <p class="error" th:errors="${event.contactEmail}"></p>
+    <label>Register
+        <input type="checkbox" th:field="${event.register}">
+    </label>
+    <p class="error" th:errors="${event.register}"></p>
+
     <input type="submit" value="Create">
 </form>
 
