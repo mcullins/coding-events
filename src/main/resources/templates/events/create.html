@@ -43,11 +43,23 @@
         <p class="error" th:errors="${event.date}"></p>
     </div>
     <div class="form-group">
+        <label> Category
+            <select th:field="${event.eventCategory}">
+                <option th:each="eventCategory:${categories}"
+                        th:value="${eventCategory.id}"
+                        th:text="${eventCategory.name}">
+                </option>
+            </select>
+            <p class="error" th:errors="${event.eventCategory}"></p>
+        </label>
+    </div>
+    <div class="form-group">
         <label>Register
             <input th:type="checkbox" th:field="${event.register}" class="form-control">
         </label>
         <p class="error" th:errors="${event.register}"></p>
     </div>
+
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-success">
     </div>

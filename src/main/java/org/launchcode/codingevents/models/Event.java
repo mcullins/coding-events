@@ -1,22 +1,17 @@
 package org.launchcode.codingevents.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.*;
 import java.util.Date;
-import java.util.Objects;
+
 
 /**
  * Created by Chris Bay
  */
 @Entity
-public class Event {
+public class Event extends AbstractEntity {
 
-
-    @Id
-    @GeneratedValue
-    private int id;
 
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
@@ -41,9 +36,13 @@ public class Event {
     @Future(message = "Date must be in the future" )
     private Date date;
 
+    @ManyToOne
+    @NotNull(message = "Category is required")
+    private EventCategory eventCategory;
+
     public Event() {}
 
-    public Event(String name, String description, String contactEmail, String location, boolean register, int attendees, Date date) {
+    public Event(String name, String description, String contactEmail, String location, boolean register, int attendees, Date date, EventCategory eventCategory) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
@@ -51,6 +50,7 @@ public class Event {
         this.register = register;
         this.attendees = attendees;
         this.date = date;
+        this.eventCategory = eventCategory;
     }
 
 
@@ -77,10 +77,6 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getLocation() {
@@ -115,21 +111,18 @@ public class Event {
         this.date = date;
     }
 
+    public EventCategory getEventCategory() {
+        return eventCategory;
+    }
+
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
+    }
+
     @Override
     public String toString() {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
